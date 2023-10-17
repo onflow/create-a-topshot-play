@@ -12,7 +12,7 @@ const transactionExplanationPath = `${recipe}/explanations/transaction.txt`;
 export const createATopShotPlay= {
   slug: recipe,
   title: "Create a TopShot Play",
-  createdAt: Date(2022, 3, 1),
+  createdAt: new Date(2022, 3, 1),
   author: "Flow Blockchain",
   playgroundLink:
     "https://play.onflow.org/15c1e86e-010c-4a7c-bcfd-98a1bddc36a7?type=tx&id=2b1db24f-95fa-44fa-8a7c-149e47c5c226&storage=none",
