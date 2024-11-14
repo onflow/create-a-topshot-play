@@ -1,9 +1,9 @@
 //TopShot Contract Code Above
-...
+.....
 
-access(self) var playDatas: {UInt32: Play}
+access(all) var playDatas: {UInt32: Play}
 
-pub var nextPlayID: UInt32
+access(all) var nextPlayID: UInt32
 
 .....
 
@@ -16,16 +16,15 @@ pub var nextPlayID: UInt32
 // its metadata. The plays are publicly accessible, so anyone can
 // read the metadata associated with a specific play ID
 //
-pub struct Play {
+access(all)
+struct Play {
 
     // The unique ID for the Play
-    pub let playID: UInt32
+    access(all) let playID: UInt32
 
     // Stores all the metadata about the play as a string mapping
-    // This is not the long term way NFT metadata will be stored. It's a temporary
-    // construct while we figure out a better way to do metadata.
-    //
-    pub let metadata: {String: String}
+    // This is not the long-term way NFT metadata will be stored.
+    access(all) let metadata: {String: String}
 
     init(metadata: {String: String}) {
         pre {
@@ -36,22 +35,21 @@ pub struct Play {
     }
 }
 
+
 .....
 
-pub resource Admin {
+access(all)
+resource Admin {
 
     // createPlay creates a new Play struct 
     // and stores it in the Plays dictionary in the TopShot smart contract
     //
     // Parameters: metadata: A dictionary mapping metadata titles to their data
-    //                       example: {"Player Name": "Kevin Durant", "Height": "7 feet"}
-    //                               (because we all know Kevin Durant is not 6'9")
-    //
     // Returns: the ID of the new Play object
-    //
-    pub fun createPlay(metadata: {String: String}): UInt32 {
+    access(all)
+    fun createPlay(metadata: {String: String}): UInt32 {
         // Create the new Play
-        var newPlay = Play(metadata: metadata)
+        let newPlay = Play(metadata: metadata)
         let newID = newPlay.playID
 
         // Increment the ID so that it isn't used again
@@ -64,6 +62,8 @@ pub resource Admin {
 
         return newID
     }
-....
 }
+
+....
+
 //rest of TopShot contract below
