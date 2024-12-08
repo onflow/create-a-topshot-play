@@ -4,9 +4,15 @@ access(all) contract Recipe {
     // This is a snippet extracting the relevant logic from the TopShot contract for demonstration purposes
     // TopShot Contract Code Above
 
-    access(all) var playDatas: {UInt32: Play}
-
+    access(all) var playDatas: {UInt32: TopShot.Play}
     access(all) var nextPlayID: UInt32
+
+    access(all) event PlayCreated(id: UInt32, metadata: {String: String})
+
+    init() {
+        self.playDatas = {}
+        self.nextPlayID = 0
+    }
 
     // Play is a Struct that holds metadata associated 
     // with a specific NBA play, like the legendary moment when 
