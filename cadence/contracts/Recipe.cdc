@@ -67,5 +67,4 @@ access(all) contract Recipe {
     }
 
     // Rest of TopShot contract below
-
 }
