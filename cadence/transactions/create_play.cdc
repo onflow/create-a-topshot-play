@@ -1,11 +1,11 @@
 import "TopShot"
 
 transaction {
-    let admin: auth(Admin) &TopShot.Admin
+    let admin: &TopShot.Admin
 
-    prepare(acct: auth(Storage) &Account) {
+    prepare(acct: AuthAccount) {
         // Borrow the Admin resource from the specified storage path
-        self.admin = acct.storage.borrow<&TopShot.Admin>(from: /storage/TopShotAdmin)
+        self.admin = acct.borrow<&TopShot.Admin>(from: /storage/TopShotAdmin)
             ?? panic("Cannot borrow admin resource")
     }
 
