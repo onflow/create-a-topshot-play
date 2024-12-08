@@ -4,7 +4,7 @@ access(all) contract Recipe {
     // This is a snippet extracting the relevant logic from the TopShot contract for demonstration purposes
     // TopShot Contract Code Above
 
-    access(all) var playDatas: {UInt32: TopShot.Play}
+    access(all) var playDatas: {UInt32: Recipe.Play}
     access(all) var nextPlayID: UInt32
 
     access(all) event PlayCreated(id: UInt32, metadata: {String: String})
@@ -40,8 +40,6 @@ access(all) contract Recipe {
         }
     }
 
-
-
     access(all)
     resource Admin {
 
@@ -57,12 +55,12 @@ access(all) contract Recipe {
             let newID = newPlay.playID
 
             // Increment the ID so that it isn't used again
-            TopShot.nextPlayID = TopShot.nextPlayID + UInt32(1)
+            Recipe.nextPlayID = Recipe.nextPlayID + UInt32(1)
 
             emit PlayCreated(id: newPlay.playID, metadata: metadata)
 
             // Store it in the contract storage
-            TopShot.playDatas[newID] = newPlay
+            Recipe.playDatas[newID] = newPlay
 
             return newID
         }
