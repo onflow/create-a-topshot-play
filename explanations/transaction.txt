@@ -1,3 +1,3 @@
-To create a play, you first need to get a reference to the admin resource from the AuthAccount.
+To create a Play in the TopShot contract, you first need to obtain a reference to the Admin resource. This is done by borrowing it from the signer's storage using the authorized account's storage.borrow method and specifying the path where the Admin resource is stored. If the resource is not found, the transaction will panic to prevent further execution.
 
-Once you receive that reference you can then create a play that gets stored in the playDatas dictionary.
+Once you have the Admin resource reference, you can use it to create Plays. In this transaction, the createPlay function is called twice with different metadata for each Play. Each Play is stored in the playDatas dictionary, ensuring it is properly recorded in the contract. This approach ensures secure access to the Admin resource and allows Plays to be created efficiently and logged for future reference.

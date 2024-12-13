@@ -1,10 +1,7 @@
-In the TopShot contract when you are creating a Play that will be included in sets as a moment you first have to start your contract off by creating a dictionary that stores all of the plays you create. Also you would create a variable called nextPlayID to make sure you aren't overlapping on ID's.
+In the TopShot contract, creating a Play to be included in sets as a Moment starts with setting up a dictionary, playDatas, to store all Plays. You also define a nextPlayID variable to ensure each Play gets a unique ID without overlaps.
 
-Then you would create a structure that would be stored in the playDatas dictionary. Here, all that is needed for the Play struct is to input a parameter for metadata which is an object containing strings.
+A Play struct is then created, which stores a unique ID and a metadata object containing descriptive key-value pairs about the Play. This struct will be stored in the playDatas dictionary, ensuring organized and efficient data management.
 
-Once these are established, you would have an admin resource that would hold the ability to create a new play. For more information on Admin resources check out the Admin resource example.
+Next, an Admin resource is introduced to control the creation of new Plays securely. The createPlay function within this resource takes metadata as input, generates a new Play using the metadata, and assigns it a unique ID from nextPlayID. After storing the Play in the playDatas dictionary, the function increments nextPlayID to avoid reuse, emits a PlayCreated event to log the creation, and returns the new Play's ID.
 
-Here you would call the createPlay function that takes in a metadata argument. You would then create the new play by passing in the metadata. You would also take the newPlay's ID so that you can use it to assign the struct to the dictionary.
-
-Then you would increment the ID so that it can't be used again, emit a PlayCreated event, and store the newPlay in the dictionary.
-
+This streamlined process ensures that Plays are uniquely identified, securely created, and properly logged, forming the foundation for Moments that reference them.
